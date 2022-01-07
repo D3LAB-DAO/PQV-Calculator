@@ -12,7 +12,7 @@ const Header = () => {
       <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
-            DAPPO: PQV Tutorial
+            PQV-TUTORIAL
           </a>
         </div>
       </nav>
