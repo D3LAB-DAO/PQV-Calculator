@@ -30,22 +30,8 @@ const PQV = () => {
     <div className="container mb-5">
       <div className="row">
         <div className="col">
-          <div class="mb-4">
-            <label for="totalVote" class="form-label">
-              <h3>TOTAL VOTE AMOUNT</h3>
-            </label>
-            <input
-              type="text"
-              class="form-control"
-              id="totalVote"
-              value={totalVote}
-              onChange={(e) => setTotalVote(e.target.value)}
-            />
-          </div>
-        </div>
-        <div className="col">
-          <div class="mb-4">
-            <h3>NUMBER OF PROJECTS</h3>
+          <div className="mb-4">
+            <h3>NUMBER OF VOTERS</h3>
             <h1>{projList.length}</h1>
           </div>
         </div>
@@ -53,11 +39,17 @@ const PQV = () => {
       <div className="row mb-3">
         <h3>PQV VOTINGS</h3>
         <table>
+          <tr className="table-bordered">
+            <td rowspan="2">VOTERS</td>
+            <td colspan="4">(Ex | 10, 20, 30, ...)</td>
+            <td rowspan="2">VOTED AMOUNT</td>
+            <td rowspan="2">PROJECT'S VOTED AMOUNT</td>
+          </tr>
           <tr>
-            <td>PROJECTS</td>
-            <td>VOTING (Ex | 10, 20, 30 ...)</td>
-            <td>VOTED AMOUNT</td>
-            <td>PROJECT'S VOTED AMOUNT</td>
+            <td>PROJECT 1</td>
+            <td>PROJECT 2</td>
+            <td>PROJECT 3</td>
+            <td>PROJECT 4</td>
           </tr>
           <projListContext.Provider value={{ projList, setProjList }}>
             {projList.map((e) => (
