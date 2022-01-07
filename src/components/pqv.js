@@ -2,28 +2,37 @@ import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { createContext } from "react";
 
-import ProjList from "./projlist";
+import VoterList from "./voterlist";
+import VotingResult from "./votingresult";
 
-export const projListContext = createContext();
+export const voterListContext = createContext();
 
 const PQV = () => {
-  const [totalVote, setTotalVote] = useState();
-  const [projList, setProjList] = useState([{ index: 1, voting: "" }]);
+  const [voterList, setVoterList] = useState([
+    { index: 0, projList: ["", "", "", ""] },
+  ]);
 
   useEffect(() => {
-    console.log(projList);
-    console.log(totalVote);
+    console.log(voterList);
+    console.log(voterList.length);
   });
 
   const addList = () => {
-    const tmp = [...projList, { index: projList.length + 1, voting: "" }];
-    setProjList(tmp);
+    const tmp = [
+      ...voterList,
+      { index: voterList.length, projList: ["", "", "", ""] },
+    ];
+    setVoterList(tmp);
   };
 
   const removeList = () => {
-    const tmp = [...projList];
+    const tmp = [...voterList];
     tmp.pop();
-    setProjList(tmp);
+    setVoterList(tmp);
+  };
+
+  const popupAlert = () => {
+    return alert("No More Voters!");
   };
 
   return (
@@ -32,36 +41,53 @@ const PQV = () => {
         <div className="col">
           <div className="mb-4">
             <h3>NUMBER OF VOTERS</h3>
-            <h1>{projList.length}</h1>
+            <h1>{voterList.length}</h1>
           </div>
         </div>
       </div>
       <div className="row mb-3">
         <h3>PQV VOTINGS</h3>
-        <table>
-          <tr className="table-bordered">
-            <td rowspan="2">VOTERS</td>
-            <td colspan="4">(Ex | 10, 20, 30, ...)</td>
-            <td rowspan="2">VOTED AMOUNT</td>
-            <td rowspan="2">PROJECT'S VOTED AMOUNT</td>
-          </tr>
-          <tr>
-            <td>PROJECT 1</td>
-            <td>PROJECT 2</td>
-            <td>PROJECT 3</td>
-            <td>PROJECT 4</td>
-          </tr>
-          <projListContext.Provider value={{ projList, setProjList }}>
-            {projList.map((e) => (
-              <ProjList index={e.index} voting={e.voting} />
-            ))}
-          </projListContext.Provider>
-        </table>
+        <div class="table-responsive">
+          <table className="table align-middle">
+            <thead>
+              <td>VOTERS</td>
+              <td>PROJECT 1</td>
+              <td>PROJECT 2</td>
+              <td>PROJECT 3</td>
+              <td>PROJECT 4</td>
+            </thead>
+            <tbody>
+              <voterListContext.Provider value={{ voterList, setVoterList }}>
+                {voterList.map((e) => (
+                  <VoterList index={e.index} />
+                ))}
+              </voterListContext.Provider>
+            </tbody>
+          </table>
+          <div class="table-responsive mt-5">
+            <table className="table">
+              <thead>
+                <td>Type</td>
+                <td>PROJECT 1</td>
+                <td>PROJECT 2</td>
+                <td>PROJECT 3</td>
+                <td>PROJECT 4</td>
+              </thead>
+              <tbody>
+                <VotingResult />
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
-      <projListContext.Provider value={{ projList, setProjList }}>
+      <voterListContext.Provider value={{ voterList, setVoterList }}>
         <div className="row mb-3">
           <div className="col">
-            <button type="button" className="btn btn-primary" onClick={addList}>
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={voterList.length < 10 ? addList : popupAlert}
+            >
               ADD
             </button>
           </div>
@@ -82,7 +108,7 @@ const PQV = () => {
             </button>
           </div>
         </div>
-      </projListContext.Provider>
+      </voterListContext.Provider>
     </div>
   );
 };
