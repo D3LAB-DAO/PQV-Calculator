@@ -41,44 +41,47 @@ const PQV = () => {
         <div className="col">
           <div className="mb-4">
             <h3>NUMBER OF VOTERS</h3>
-            <h1>{voterList.length}</h1>
+            <h1 className="fw-bold">{voterList.length}</h1>
           </div>
         </div>
       </div>
       <div className="row mb-3">
-        <h3>PQV VOTINGS</h3>
-        <div class="table-responsive">
-          <table className="table align-middle">
-            <thead>
-              <td>VOTERS</td>
-              <td>PROJECT 1</td>
-              <td>PROJECT 2</td>
-              <td>PROJECT 3</td>
-              <td>PROJECT 4</td>
-            </thead>
-            <tbody>
-              <voterListContext.Provider value={{ voterList, setVoterList }}>
-                {voterList.map((e) => (
-                  <VoterList index={e.index} />
-                ))}
-              </voterListContext.Provider>
-            </tbody>
-          </table>
-          <div class="table-responsive mt-5">
-            <table className="table">
-              <thead>
-                <td>Type</td>
-                <td>PROJECT 1</td>
-                <td>PROJECT 2</td>
-                <td>PROJECT 3</td>
-                <td>PROJECT 4</td>
-              </thead>
-              <tbody>
-                <VotingResult />
-              </tbody>
-            </table>
-          </div>
-        </div>
+        <h3>VOTINGS</h3>
+      </div>
+      <div className="table-responsive mt-3">
+        <table className="table align-middle">
+          <thead className="fw-bold">
+            <td>VOTERS</td>
+            <td>PROJECT 1</td>
+            <td>PROJECT 2</td>
+            <td>PROJECT 3</td>
+            <td>PROJECT 4</td>
+          </thead>
+          <tbody>
+            <voterListContext.Provider value={{ voterList, setVoterList }}>
+              {voterList.map((e) => (
+                <VoterList index={e.index} />
+              ))}
+            </voterListContext.Provider>
+          </tbody>
+        </table>
+      </div>
+      <div className="row mt-3">
+        <h3>VOTING RESULTS</h3>
+      </div>
+      <div className="table-responsive mt-3">
+        <table className="table">
+          <thead className="fw-bold">
+            <td>TYPE</td>
+            <td>PROJECT 1</td>
+            <td>PROJECT 2</td>
+            <td>PROJECT 3</td>
+            <td>PROJECT 4</td>
+          </thead>
+          <tbody>
+            <VotingResult />
+          </tbody>
+        </table>
       </div>
       <voterListContext.Provider value={{ voterList, setVoterList }}>
         <div className="row mb-3">

@@ -10,13 +10,22 @@ const Footer = () => {
     padding-bottom: 1.5rem;
   `;
 
+  const Img = styled.img`
+    width: 5rem;
+  `;
+
+  const Name = styled.h2`
+    color: #dca1b1;
+  `;
+
   return (
     <Div className="container-fluid">
       <div className="row mb-3">
         <div className="col">
-          <h2>DLAB-DAO</h2>
+          <Img src="img/logo.png" alt="logo" />
+          <Name>DLAB-DAO</Name>
         </div>
-        <div className="col">
+        <div className="col align-self-center">
           <p className="text-start">
             Decentralized Autonomous Organization that studies decentralized
             things in a decentralized manner.
