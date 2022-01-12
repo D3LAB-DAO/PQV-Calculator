@@ -4,6 +4,7 @@ import { createContext } from "react";
 
 import VoterList from "./voterlist";
 import VotingResult from "./votingresult";
+import { calCivil, calLinear, calPQV, calQV } from "../utils/voting";
 
 export const voterListContext = createContext();
 
@@ -11,6 +12,10 @@ const PQV = () => {
   const [voterList, setVoterList] = useState([
     { index: 0, projList: ["", "", "", ""] },
   ]);
+  const [linearResult, setLinearResult] = useState([]);
+  const [QVResult, setQVResult] = useState([]);
+  const [civilResult, setCivilResult] = useState([]);
+  const [PQVResult, setPQVResult] = useState([]);
 
   useEffect(() => {
     console.log(voterList);
@@ -29,6 +34,42 @@ const PQV = () => {
     const tmp = [...voterList];
     tmp.pop();
     setVoterList(tmp);
+  };
+
+  const calList = () => {
+    let resultLinear = [0, 0, 0, 0];
+    let resultQV = [0, 0, 0, 0];
+    let resultCivil = [0, 0, 0, 0];
+    let resultPQV = [0, 0, 0, 0];
+
+    voterList.forEach((voter) => {
+      voter.projList.forEach((proj, index) => {
+        resultLinear[index] += calLinear(proj);
+      });
+    });
+
+    voterList.forEach((voter) => {
+      voter.projList.forEach((proj, index) => {
+        resultQV[index] += calQV(proj);
+      });
+    });
+
+    voterList.forEach((voter) => {
+      voter.projList.forEach((proj, index) => {
+        resultCivil[index] += calCivil(proj);
+      });
+    });
+
+    voterList.forEach((voter) => {
+      voter.projList.forEach((proj, index) => {
+        resultPQV[index] += calPQV(proj);
+      });
+    });
+
+    setLinearResult(resultLinear);
+    setQVResult(resultQV);
+    setCivilResult(resultCivil);
+    setPQVResult(resultPQV);
   };
 
   const popupAlert = () => {
@@ -79,7 +120,12 @@ const PQV = () => {
             <td>PROJECT 4</td>
           </thead>
           <tbody>
-            <VotingResult />
+            <VotingResult
+              linearResult={linearResult}
+              QVResult={QVResult}
+              civilResult={civilResult}
+              PQVResult={PQVResult}
+            />
           </tbody>
         </table>
       </div>
@@ -106,7 +152,11 @@ const PQV = () => {
         </div>
         <div className="row">
           <div className="col">
-            <button type="button" className="btn-lg btn-success">
+            <button
+              type="button"
+              className="btn-lg btn-success"
+              onClick={calList}
+            >
               GO
             </button>
           </div>
