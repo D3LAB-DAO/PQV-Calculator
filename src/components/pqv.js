@@ -17,10 +17,7 @@ const PQV = () => {
   const [civilResult, setCivilResult] = useState([]);
   const [PQVResult, setPQVResult] = useState([]);
 
-  useEffect(() => {
-    console.log(voterList);
-    console.log(voterList.length);
-  });
+  useEffect(() => {});
 
   const addList = () => {
     const tmp = [
@@ -48,6 +45,8 @@ const PQV = () => {
       });
     });
 
+    let sumVoting = resultLinear;
+
     voterList.forEach((voter) => {
       voter.projList.forEach((proj, index) => {
         resultQV[index] += calQV(proj);
@@ -64,6 +63,10 @@ const PQV = () => {
       voter.projList.forEach((proj, index) => {
         resultPQV[index] += calPQV(proj);
       });
+    });
+
+    resultPQV.forEach((data, index) => {
+      resultPQV[index] /= sumVoting[index];
     });
 
     setLinearResult(resultLinear);

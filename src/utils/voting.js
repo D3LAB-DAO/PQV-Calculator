@@ -8,6 +8,7 @@ export const calLinear = (data) => {
 
   return result;
 };
+
 export const calQV = (data) => {
   const preset = splitVoting(data);
 
@@ -18,11 +19,27 @@ export const calQV = (data) => {
 
   return result;
 };
+
 export const calCivil = (data) => {
   const preset = splitVoting(data);
+
+  let result = 0;
+  preset.forEach((element) => {
+    result += Number(element);
+  });
+
+  return result;
 };
+
 export const calPQV = (data) => {
   const preset = splitVoting(data);
+
+  let result = 0;
+  preset.forEach((element) => {
+    result += Number(element) * Math.sqrt(Number(element));
+  });
+
+  return result;
 };
 
 export const splitVoting = (data) => {
