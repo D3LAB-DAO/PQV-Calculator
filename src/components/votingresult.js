@@ -3,7 +3,7 @@ import styled from "styled-components";
 const VotingResult = (props) => {
   const linearResult = props.linearResult;
   const QVResult = props.QVResult;
-  const civilResult = props.civilResult;
+  const sybilResult = props.sybilResult;
   const PQVResult = props.PQVResult;
 
   return (
@@ -23,11 +23,11 @@ const VotingResult = (props) => {
         <td>{QVResult[3]}</td>
       </tr>
       <tr>
-        <td>QV in Civil Attack</td>
-        <td>{civilResult[0]}</td>
-        <td>{civilResult[1]}</td>
-        <td>{civilResult[2]}</td>
-        <td>{civilResult[3]}</td>
+        <td>QV in Sybil Attack</td>
+        <td>{sybilResult[0]}</td>
+        <td>{sybilResult[1]}</td>
+        <td>{sybilResult[2]}</td>
+        <td>{sybilResult[3]}</td>
       </tr>
       <tr>
         <td>PQV or EQV</td>

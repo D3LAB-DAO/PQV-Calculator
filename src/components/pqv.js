@@ -4,7 +4,7 @@ import { createContext } from "react";
 
 import VoterList from "./voterlist";
 import VotingResult from "./votingresult";
-import { calCivil, calLinear, calPQV, calQV } from "../utils/voting";
+import { calSybil, calLinear, calPQV, calQV } from "../utils/voting";
 
 export const voterListContext = createContext();
 
@@ -14,7 +14,7 @@ const PQV = () => {
   ]);
   const [linearResult, setLinearResult] = useState([]);
   const [QVResult, setQVResult] = useState([]);
-  const [civilResult, setCivilResult] = useState([]);
+  const [sybilResult, setSybilResult] = useState([]);
   const [PQVResult, setPQVResult] = useState([]);
 
   useEffect(() => {});
@@ -36,7 +36,7 @@ const PQV = () => {
   const calList = () => {
     let resultLinear = [0, 0, 0, 0];
     let resultQV = [0, 0, 0, 0];
-    let resultCivil = [0, 0, 0, 0];
+    let resultSybil = [0, 0, 0, 0];
     let resultPQV = [0, 0, 0, 0];
 
     voterList.forEach((voter) => {
@@ -55,7 +55,7 @@ const PQV = () => {
 
     voterList.forEach((voter) => {
       voter.projList.forEach((proj, index) => {
-        resultCivil[index] += calCivil(proj);
+        resultSybil[index] += calSybil(proj);
       });
     });
 
@@ -66,12 +66,12 @@ const PQV = () => {
     });
 
     resultPQV.forEach((data, index) => {
-      resultPQV[index] /= sumVoting[index];
+      resultPQV[index] /= sumVoting[index] === 0 ? 1 : sumVoting[index];
     });
 
     setLinearResult(resultLinear);
     setQVResult(resultQV);
-    setCivilResult(resultCivil);
+    setSybilResult(resultSybil);
     setPQVResult(resultPQV);
   };
 
@@ -126,7 +126,7 @@ const PQV = () => {
             <VotingResult
               linearResult={linearResult}
               QVResult={QVResult}
-              civilResult={civilResult}
+              sybilResult={sybilResult}
               PQVResult={PQVResult}
             />
           </tbody>

@@ -20,7 +20,7 @@ export const calQV = (data) => {
   return result;
 };
 
-export const calCivil = (data) => {
+export const calSybil = (data) => {
   const preset = splitVoting(data);
 
   let result = 0;
