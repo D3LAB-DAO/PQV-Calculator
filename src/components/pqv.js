@@ -79,6 +79,15 @@ const PQV = () => {
     return alert("No More Voters!");
   };
 
+  const Div = styled.div`
+    background-color: #323232;
+    color: #f8f8f8;
+  `;
+
+  const Table = styled.table`
+    color: #f8f8f8;
+  `;
+
   return (
     <div className="container mb-5">
       <div className="row">
@@ -89,11 +98,35 @@ const PQV = () => {
           </div>
         </div>
       </div>
+      <div className="row mt-3">
+        <h3>VOTING RESULTS</h3>
+      </div>
+      <Div className="card card border-light mb-5">
+        <div className="table-responsive mt-3 card-body">
+          <Table className="table">
+            <thead className="fw-bold">
+              <td>TYPE</td>
+              <td>PROJECT 1</td>
+              <td>PROJECT 2</td>
+              <td>PROJECT 3</td>
+              <td>PROJECT 4</td>
+            </thead>
+            <tbody>
+              <VotingResult
+                linearResult={linearResult}
+                QVResult={QVResult}
+                sybilResult={sybilResult}
+                PQVResult={PQVResult}
+              />
+            </tbody>
+          </Table>
+        </div>
+      </Div>
       <div className="row mb-3">
         <h3>VOTINGS</h3>
       </div>
       <div className="table-responsive mt-3">
-        <table className="table align-middle">
+        <Table className="table align-middle">
           <thead className="fw-bold">
             <td>VOTERS</td>
             <td>PROJECT 1</td>
@@ -108,29 +141,7 @@ const PQV = () => {
               ))}
             </voterListContext.Provider>
           </tbody>
-        </table>
-      </div>
-      <div className="row mt-3">
-        <h3>VOTING RESULTS</h3>
-      </div>
-      <div className="table-responsive mt-3">
-        <table className="table">
-          <thead className="fw-bold">
-            <td>TYPE</td>
-            <td>PROJECT 1</td>
-            <td>PROJECT 2</td>
-            <td>PROJECT 3</td>
-            <td>PROJECT 4</td>
-          </thead>
-          <tbody>
-            <VotingResult
-              linearResult={linearResult}
-              QVResult={QVResult}
-              sybilResult={sybilResult}
-              PQVResult={PQVResult}
-            />
-          </tbody>
-        </table>
+        </Table>
       </div>
       <voterListContext.Provider value={{ voterList, setVoterList }}>
         <div className="row mb-3">

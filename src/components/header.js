@@ -17,7 +17,7 @@ const Header = () => {
       <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
           <a class="navbar-brand fw-bold" href="#">
-            PQV-TUTORIAL
+            Governor-C Simulator
           </a>
         </div>
       </nav>
