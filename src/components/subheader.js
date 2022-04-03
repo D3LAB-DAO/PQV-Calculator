@@ -6,7 +6,7 @@ const Img = styled.img`
 `;
 
 const Space = styled.div`
-  margin-bottom: 12.5rem;
+  margin-bottom: 10rem;
 `;
 
 const SubHeader = () => {
