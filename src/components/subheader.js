@@ -1,23 +1,36 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import styled from "styled-components";
 
+const Img = styled.img`
+  height: 30rem;
+`;
+
+const Space = styled.div`
+  margin-bottom: 12.5rem;
+`;
+
 const SubHeader = () => {
-  const Img = styled.img`
-    height: 20%;
-    background-color: #323232;
-  `;
-
-  const Div = styled.div`
-    height: 10%;
-    background-color: #323232;
-  `;
-
   return (
     <div className="container-fluid">
-      <Div className="row">
+      <div className="row">
         <div className="col">
-          <Img className="g-0" src="img/logo_b.png" alt="logo_b" />
+          <Img className="" src="img/logo_c.png" alt="logo_c" />
         </div>
-      </Div>
+      </div>
+      <div className="row mb-3">
+        <div className="col">
+          <h1 className="fw-bold">Governor-C Simulator</h1>
+          <h5>Description of Governor-C Simulator</h5>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col">
+          <a class="btn btn-pink" href="#">
+            Learn More
+          </a>
+        </div>
+      </div>
+      <Space className="row" />
     </div>
   );
 };

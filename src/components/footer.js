@@ -1,29 +1,24 @@
 import styled from "styled-components";
 
+const Div = styled.div`
+  background-color: #212529;
+  color: white;
+  width: 100%;
+  position: absolute;
+  padding-top: 2rem;
+  padding-bottom: 1.5rem;
+`;
+
+const Img = styled.img`
+  width: 20rem;
+`;
+
 const Footer = () => {
-  const Div = styled.div`
-    background-color: #212529;
-    color: white;
-    width: 100%;
-    position: absolute;
-    padding-top: 2rem;
-    padding-bottom: 1.5rem;
-  `;
-
-  const Img = styled.img`
-    width: 5rem;
-  `;
-
-  const Name = styled.h2`
-    color: #dca1b1;
-  `;
-
   return (
     <Div className="container-fluid">
       <div className="row mb-3">
         <div className="col">
-          <Img src="img/logo.png" alt="logo" />
-          <Name>DLAB-DAO</Name>
+          <Img src="img/text_logo_2.png" alt="logo" />
         </div>
         <div className="col align-self-center">
           <p className="text-start">
@@ -33,7 +28,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="row">
-        <h6>Copyright 2022. DLAB-DAO. All Rights Reserved.</h6>
+        <h6>Copyright 2022. D3LAB-DAO. All Rights Reserved.</h6>
       </div>
     </Div>
   );

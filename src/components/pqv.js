@@ -8,6 +8,15 @@ import { calSybil, calLinear, calPQV, calQV } from "../utils/voting";
 
 export const voterListContext = createContext();
 
+const Thead = styled.thead`
+  background: #dca1b1;
+`;
+
+const Div = styled.div`
+  background: #323232;
+  color: #f8f8f8;
+`;
+
 const PQV = () => {
   const [voterList, setVoterList] = useState([
     { index: 0, projList: ["", "", "", ""] },
@@ -69,24 +78,15 @@ const PQV = () => {
       resultPQV[index] /= sumVoting[index] === 0 ? 1 : sumVoting[index];
     });
 
-    setLinearResult(resultLinear);
-    setQVResult(resultQV);
-    setSybilResult(resultSybil);
-    setPQVResult(resultPQV);
+    setLinearResult(resultLinear.map((num) => num.toFixed(2)));
+    setQVResult(resultQV.map((num) => num.toFixed(2)));
+    setSybilResult(resultSybil.map((num) => num.toFixed(2)));
+    setPQVResult(resultPQV.map((num) => num.toFixed(2)));
   };
 
   const popupAlert = () => {
     return alert("No More Voters!");
   };
-
-  const Div = styled.div`
-    background-color: #323232;
-    color: #f8f8f8;
-  `;
-
-  const Table = styled.table`
-    color: #f8f8f8;
-  `;
 
   return (
     <div className="container mb-5">
@@ -101,16 +101,16 @@ const PQV = () => {
       <div className="row mt-3">
         <h3>VOTING RESULTS</h3>
       </div>
-      <Div className="card card border-light mb-5">
+      <Div className="card border-light mb-5">
         <div className="table-responsive mt-3 card-body">
-          <Table className="table">
-            <thead className="fw-bold">
+          <table className="table">
+            <Thead className="fw-bold">
               <td>TYPE</td>
               <td>PROJECT 1</td>
               <td>PROJECT 2</td>
               <td>PROJECT 3</td>
               <td>PROJECT 4</td>
-            </thead>
+            </Thead>
             <tbody>
               <VotingResult
                 linearResult={linearResult}
@@ -119,36 +119,38 @@ const PQV = () => {
                 PQVResult={PQVResult}
               />
             </tbody>
-          </Table>
+          </table>
         </div>
       </Div>
       <div className="row mb-3">
         <h3>VOTINGS</h3>
       </div>
-      <div className="table-responsive mt-3">
-        <Table className="table align-middle">
-          <thead className="fw-bold">
-            <td>VOTERS</td>
-            <td>PROJECT 1</td>
-            <td>PROJECT 2</td>
-            <td>PROJECT 3</td>
-            <td>PROJECT 4</td>
-          </thead>
-          <tbody>
-            <voterListContext.Provider value={{ voterList, setVoterList }}>
-              {voterList.map((e) => (
-                <VoterList index={e.index} />
-              ))}
-            </voterListContext.Provider>
-          </tbody>
-        </Table>
-      </div>
+      <Div className="card border-light mb-5">
+        <div className="table-responsive mt-3 card-body">
+          <table className="table align-middle">
+            <Thead className="fw-bold">
+              <td>VOTERS</td>
+              <td>PROJECT 1</td>
+              <td>PROJECT 2</td>
+              <td>PROJECT 3</td>
+              <td>PROJECT 4</td>
+            </Thead>
+            <tbody>
+              <voterListContext.Provider value={{ voterList, setVoterList }}>
+                {voterList.map((e) => (
+                  <VoterList index={e.index} />
+                ))}
+              </voterListContext.Provider>
+            </tbody>
+          </table>
+        </div>
+      </Div>
       <voterListContext.Provider value={{ voterList, setVoterList }}>
         <div className="row mb-3">
           <div className="col">
             <button
               type="button"
-              className="btn btn-primary"
+              className="btn btn-add"
               onClick={voterList.length < 10 ? addList : popupAlert}
             >
               ADD
@@ -157,7 +159,7 @@ const PQV = () => {
           <div className="col">
             <button
               type="button"
-              className="btn btn-danger"
+              className="btn btn-remove"
               onClick={removeList}
             >
               REMOVE
@@ -166,11 +168,7 @@ const PQV = () => {
         </div>
         <div className="row">
           <div className="col">
-            <button
-              type="button"
-              className="btn-lg btn-success"
-              onClick={calList}
-            >
+            <button type="button" className="btn btn-go" onClick={calList}>
               GO
             </button>
           </div>
