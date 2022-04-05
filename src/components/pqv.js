@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { createContext } from "react";
 
@@ -8,14 +7,7 @@ import { calSybil, calLinear, calPQV, calQV } from "../utils/voting";
 
 export const voterListContext = createContext();
 
-const Thead = styled.thead`
-  background: #dca1b1;
-`;
-
-const Div = styled.div`
-  background: #323232;
-  color: #f8f8f8;
-`;
+let isLoading = false;
 
 const PQV = () => {
   const [voterList, setVoterList] = useState([
@@ -26,7 +18,7 @@ const PQV = () => {
   const [sybilResult, setSybilResult] = useState([]);
   const [PQVResult, setPQVResult] = useState([]);
 
-  useEffect(() => {});
+  useEffect(() => { });
 
   const addList = () => {
     const tmp = [
@@ -43,6 +35,8 @@ const PQV = () => {
   };
 
   const calList = () => {
+    isLoading = true;
+
     let resultLinear = [0, 0, 0, 0];
     let resultQV = [0, 0, 0, 0];
     let resultSybil = [0, 0, 0, 0];
@@ -89,91 +83,104 @@ const PQV = () => {
   };
 
   return (
-    <div className="container mb-5">
+    <div id="simulator" className="container mb-3 sect">
       <div className="row">
-        <div className="col">
-          <div className="mb-4">
-            <h3>NUMBER OF VOTERS</h3>
-            <h1 className="fw-bold">{voterList.length}</h1>
-          </div>
-        </div>
+        <h1 className="row__title">SIMULATOR</h1>
       </div>
-      <div className="row mt-3">
-        <h3>VOTING RESULTS</h3>
+      <div className="container mb-5">
+        <voterListContext.Provider value={{ voterList, setVoterList }}>
+          <div className="row">
+            <div className="col-lg-1 col-xl-2"></div>
+            <div className="col col-lg-5 col-xl-4">
+              <div className="card bg-darkgray">
+                <h5 className="card-header">NUMBER OF VOTERS</h5>
+                <div className="card-body">
+                  <h5 className="card-title">{voterList.length}</h5>
+                  <div>
+                    <i className="bi bi-patch-plus-fill btn-icon btn-icon-padding btn-icon-active" onClick={voterList.length < 10 ? addList : popupAlert}></i>
+                    <i className="bi bi-patch-minus-fill btn-icon btn-icon-active" onClick={removeList}></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col col-lg-5 col-xl-4">
+              <div className="card bg-darkgray">
+                <h5 className="card-header">NUMBER OF PROPOSALS</h5>
+                <div className="card-body">
+                  <h5 className="card-title">4</h5>
+                  <div>
+                    <i className="bi bi-patch-plus-fill btn-icon btn-icon-padding btn-icon-disabled"></i>
+                    <i className="bi bi-patch-minus-fill btn-icon btn-icon-disabled"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-1 col-xl-2"></div>
+          </div>
+          <div className="row">
+            <div className="col-lg-2"></div>
+            <div className="table-responsive mt-3 col-lg-8">
+              <table className="table align-middle">
+                <thead className="fw-bold">
+                  <tr>
+                    <th>VOTERS</th>
+                    <th>Proposal A</th>
+                    <th>Proposal B</th>
+                    <th>Proposal C</th>
+                    <th>Proposal D</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {voterList.map((e) => (
+                    <VoterList index={e.index} key={e.index} />
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div className="col-lg-2"></div>
+          </div>
+          <div className="row">
+            <div className="col">
+              <button type="button" className="btn btn-dark" onClick={calList}>
+                GO
+              </button>
+            </div>
+          </div>
+        </voterListContext.Provider>
+
+        <div id="result" style={isLoading ? {} : { display: 'none' }} >
+          <div className="row row__title row__padding">
+            <h3>VOTING RESULTS</h3>
+            <hr className="hr__primary" />
+          </div>
+          <div className="row">
+            <div className="col-lg-2"></div>
+            <div className="table-responsive card-body table__padding col-lg-8">
+              <table className="table">
+                <thead className="fw-bold">
+                  <tr>
+                    <th>TYPE</th>
+                    <th>Proposal A</th>
+                    <th>Proposal B</th>
+                    <th>Proposal C</th>
+                    <th>Proposal D</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <VotingResult
+                    linearResult={linearResult}
+                    QVResult={QVResult}
+                    sybilResult={sybilResult}
+                    PQVResult={PQVResult}
+                  />
+                </tbody>
+              </table>
+            </div>
+            <div className="col-lg-2"></div>
+          </div>
+        </div>
+
       </div>
-      <Div className="card border-light mb-5">
-        <div className="table-responsive mt-3 card-body">
-          <table className="table">
-            <Thead className="fw-bold">
-              <td>TYPE</td>
-              <td>PROJECT 1</td>
-              <td>PROJECT 2</td>
-              <td>PROJECT 3</td>
-              <td>PROJECT 4</td>
-            </Thead>
-            <tbody>
-              <VotingResult
-                linearResult={linearResult}
-                QVResult={QVResult}
-                sybilResult={sybilResult}
-                PQVResult={PQVResult}
-              />
-            </tbody>
-          </table>
-        </div>
-      </Div>
-      <div className="row mb-3">
-        <h3>VOTINGS</h3>
-      </div>
-      <Div className="card border-light mb-5">
-        <div className="table-responsive mt-3 card-body">
-          <table className="table align-middle">
-            <Thead className="fw-bold">
-              <td>VOTERS</td>
-              <td>PROJECT 1</td>
-              <td>PROJECT 2</td>
-              <td>PROJECT 3</td>
-              <td>PROJECT 4</td>
-            </Thead>
-            <tbody>
-              <voterListContext.Provider value={{ voterList, setVoterList }}>
-                {voterList.map((e) => (
-                  <VoterList index={e.index} />
-                ))}
-              </voterListContext.Provider>
-            </tbody>
-          </table>
-        </div>
-      </Div>
-      <voterListContext.Provider value={{ voterList, setVoterList }}>
-        <div className="row mb-3">
-          <div className="col">
-            <button
-              type="button"
-              className="btn btn-add"
-              onClick={voterList.length < 10 ? addList : popupAlert}
-            >
-              ADD
-            </button>
-          </div>
-          <div className="col">
-            <button
-              type="button"
-              className="btn btn-remove"
-              onClick={removeList}
-            >
-              REMOVE
-            </button>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col">
-            <button type="button" className="btn btn-go" onClick={calList}>
-              GO
-            </button>
-          </div>
-        </div>
-      </voterListContext.Provider>
     </div>
   );
 };

@@ -1,5 +1,3 @@
-import styled from "styled-components";
-
 const VotingResult = (props) => {
   const linearResult = props.linearResult;
   const QVResult = props.QVResult;

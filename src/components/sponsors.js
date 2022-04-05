@@ -1,32 +1,20 @@
-import styled from "styled-components";
-
-const Space = styled.div`
-  margin-top: 10rem;
-`;
-
-const Chainlink = styled.img`
-  height: 10rem;
-`;
-
-const Curg = styled.img`
-  height: 10rem;
-`;
-
 const Sponsors = () => {
   return (
-    <div className="container mb-3">
-      <Space className="row mb-3">
+    <div id="sponsors" className="container mb-3 sect">
+      <div className="row mb-3">
         <div className="col">
-          <h1 className="fw-bold">SPONSORS</h1>
+          <h1 className="row__title">SPONSORS</h1>
         </div>
-      </Space>
+      </div>
       <div className="row">
-        <div className="col">
-          <Chainlink className="" src="img/chainlink.png" alt="chainlink" />
+        <div className="col-lg-2"></div>
+        <div className="col col-lg-4">
+          <img className="sponsor-logo partner_img" src="img/chainlink_white.png" alt="chainlink" />
         </div>
-        <div className="col">
-          <Curg className="" src="img/curg.png" alt="curg" />
+        <div className="col col-lg-4">
+          <img className="sponsor-logo partner_img" src="img/curg_white.png" alt="curg" />
         </div>
+        <div className="col-lg-2"></div>
       </div>
     </div>
   );
