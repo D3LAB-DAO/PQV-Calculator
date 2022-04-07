@@ -1,100 +1,94 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/heading-has-content */
-import styled from "styled-components";
-
-const Space = styled.div`
-  margin-top: 10rem;
-`;
-
-const CardDark = styled.div`
-  background: #323232;
-  color: #f8f8f8;
-  border-color: #f8f8f8;
-`;
-
-const CardHeader = styled.h4`
-  background: #d3a3b1;
-  color: #f8f8f8;
-`;
-
-const LinkImg = styled.img`
-  height: 2.5rem;
-`;
-
 const Creators = () => {
-  const Creator = (props) => {
-    return (
-      <CardDark className="card">
-        <CardHeader className="card-header fw-bold">{props.role}</CardHeader>
-        <div className="card-body">
-          <h3 className="card-title">{props.name}</h3>
-          <p>Description</p>
-          <div className="row">
-            <div className="col">
-              <a href={props.mediumUrl}>
-                <LinkImg className="" src="img/medium.png" alt="medium" />
-              </a>
-            </div>
-            <div className="col">
-              <a href={props.instagramUrl}>
-                <LinkImg className="" src="img/instagram.png" alt="instagram" />
-              </a>
-            </div>
-            <div className="col">
-              <a href={props.twitterUrl}>
-                <LinkImg className="" src="img/twitter.png" alt="twitter" />
-              </a>
-            </div>
+  return (
+    <div id="members" className="container mb-3 sect">
+      <div className="row mb-3">
+        <div className="col">
+          <h1 className="row__title">MEMBERS</h1>
+        </div>
+      </div>
+
+
+      <div className="row row--center row--margin">
+        <div className="col-xl-1"></div>
+        <div className="col-xl-5 col-md-6 member-box member-box--luke">
+          <div className="member-box__wrap">
+            <div className="member-box__img"></div>
+            <h1 className="member-box__title">
+              Luke Park
+            </h1>
+            <p className="member-box__people">
+              Developer
+              <br />
+              <a href="https://sharp-saw-d58.notion.site/Luke-Park-d4edb5bf446b479796d0d9bfe422d92a" target="_blank"><i className="bi bi-house-fill member-icon"></i></a>
+              <a href="https://github.com/lukepark327" target="_blank"><i className="bi bi-github member-icon" /></a>
+              <a href="mailto:lukepark327@gmail.com" target="_blank"><i className="bi bi-envelope-fill member-icon"></i></a>
+            </p>
           </div>
         </div>
-      </CardDark>
-    );
-  };
 
-  return (
-    <div className="container mb-3">
-      <Space className="row mb-3">
-        <div className="col">
-          <h1>CREATORS</h1>
+        <div className="col-xl-5 col-md-6 member-box member-box--bosung">
+          <div className="member-box__wrap">
+            <div className="member-box__img"></div>
+            <h1 className="member-box__title">
+              Bosung Park
+            </h1>
+            <p className="member-box__people">
+              Researcher
+              <br />
+              <a href="#" target="_blank"><i className="bi bi-house-fill member-icon"></i></a>
+              <a href="#" target="_blank"><i className="bi bi-github member-icon" /></a>
+              <a href="#" target="_blank"><i className="bi bi-envelope-fill member-icon"></i></a>
+              <a href="#" target="_blank"><i className="bi bi-medium member-icon" /></a>
+              <a href="#" target="_blank"><i className="bi bi-twitter member-icon" /></a>
+              <a href="#" target="_blank"><i className="bi bi-instagram member-icon" /></a>
+            </p>
+          </div>
         </div>
-      </Space>
-      <div className="row">
-        <div className="col">
-          <Creator
-            role="Developer"
-            name="Luke Park"
-            mediumUrl="#"
-            instagramUrl="#"
-            twitterUrl="#"
-          />
+        <div className="col-xl-1"></div>
+      </div>
+
+      <div className="row row--center row--margin">
+        <div className="col-xl-1"></div>
+        <div className="col-xl-5 col-md-6 member-box member-box--ingeun">
+          <div className="member-box__wrap">
+            <div className="member-box__img"></div>
+            <h1 className="member-box__title">
+              Ingeun Kim
+            </h1>
+            <p className="member-box__people">
+              Developer
+              <br />
+              <a href="#" target="_blank"><i className="bi bi-house-fill member-icon"></i></a>
+              <a href="#" target="_blank"><i className="bi bi-github member-icon" /></a>
+              <a href="#" target="_blank"><i className="bi bi-envelope-fill member-icon"></i></a>
+              <a href="#" target="_blank"><i className="bi bi-medium member-icon" /></a>
+              <a href="#" target="_blank"><i className="bi bi-twitter member-icon" /></a>
+              <a href="#" target="_blank"><i className="bi bi-instagram member-icon" /></a>
+            </p>
+          </div>
         </div>
-        <div className="col">
-          <Creator
-            role="Researcher"
-            name="Bosung Park"
-            mediumUrl="#"
-            instagramUrl="#"
-            twitterUrl="#"
-          />
+
+        <div className="col-xl-5 col-md-6 member-box member-box--junmo">
+          <div className="member-box__wrap">
+            <div className="member-box__img"></div>
+            <h1 className="member-box__title">
+              Junmo Lee
+            </h1>
+            <p className="member-box__people">
+              Developer
+              <br />
+              <a href="#" target="_blank"><i className="bi bi-house-fill member-icon"></i></a>
+              <a href="#" target="_blank"><i className="bi bi-github member-icon" /></a>
+              <a href="#" target="_blank"><i className="bi bi-envelope-fill member-icon"></i></a>
+              <a href="#" target="_blank"><i className="bi bi-medium member-icon" /></a>
+              <a href="#" target="_blank"><i className="bi bi-twitter member-icon" /></a>
+              <a href="#" target="_blank"><i className="bi bi-instagram member-icon" /></a>
+            </p>
+          </div>
         </div>
-        <div className="col">
-          <Creator
-            role="Developer"
-            name="Ingeun Kim"
-            mediumUrl="#"
-            instagramUrl="#"
-            twitterUrl="#"
-          />
-        </div>
-        <div className="col">
-          <Creator
-            role="Developer"
-            name="Junmo Lee"
-            mediumUrl="#"
-            instagramUrl="#"
-            twitterUrl="#"
-          />
-        </div>
+        <div className="col-xl-1"></div>
       </div>
     </div>
   );

@@ -1,5 +1,3 @@
-import { useState } from "react";
-import styled from "styled-components";
 import InputCard from "./inputcard";
 
 const VoterList = (props) => {
@@ -7,7 +5,7 @@ const VoterList = (props) => {
 
   return (
     <tr>
-      <td>VOTER {index + 1}</td>
+      <td>VOTER#{index + 1}</td>
       <td>
         <InputCard index={index} projIndex={0} />
       </td>

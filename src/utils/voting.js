@@ -1,3 +1,8 @@
+export const collapseNavbar = () => {
+  var element = document.getElementById("navbarNav");
+  element.classList.remove("show");
+}
+
 export const calLinear = (data) => {
   const preset = splitVoting(data);
 

@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import { voterListContext } from "./pqv";
 import { useContext } from "react";
 
@@ -18,10 +17,10 @@ const InputCard = (props) => {
     <div className="container mt-3">
       <div className="row justify-content-center">
         <div className="col">
-          <div class="input-group mb-3">
+          <div className="input-group mb-3">
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               placeholder="10, 20, 30 ..."
               onChange={(e) => handleInputChange(e, index, projIndex)}
             />

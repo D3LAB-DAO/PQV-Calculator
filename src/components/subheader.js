@@ -2,7 +2,7 @@
 import styled from "styled-components";
 
 const Img = styled.img`
-  height: 30rem;
+  height: 25rem;
 `;
 
 const Space = styled.div`
@@ -11,21 +11,21 @@ const Space = styled.div`
 
 const SubHeader = () => {
   return (
-    <div className="container-fluid">
+    <div id="home" className="container-fluid sect">
       <div className="row">
         <div className="col">
-          <Img className="" src="img/logo_c.png" alt="logo_c" />
+          <Img className="" src="img/logo.png" alt="logo" />
         </div>
       </div>
       <div className="row mb-3">
         <div className="col">
-          <h1 className="fw-bold">Governor-C Simulator</h1>
-          <h5>Description of Governor-C Simulator</h5>
+          <h1 className="sect__title">Governor-C Simulator</h1>
+          <h5 className="row__sub">Description of Governor-C Simulator</h5>
         </div>
       </div>
       <div className="row">
         <div className="col">
-          <a class="btn btn-pink" href="#">
+          <a className="btn btn-dark" href="#">
             Learn More
           </a>
         </div>
