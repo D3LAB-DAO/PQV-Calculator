@@ -1256,15 +1256,15 @@ input[type="text"], textarea {
 }
 
 .member-box--bosung .member-box__img {
-  background-image: url("https://image.ibb.co/iyT8eG/2.png");
+  background-image: url("../../public/img/bosung-profile.png");
 }
 
 .member-box--ingeun .member-box__img {
-  background-image: url("https://preview.ibb.co/nDRpmw/3.png");
+  background-image: url("../../public/img/ingeun-profile.png");
 }
 
 .member-box--junmo .member-box__img {
-  background-image: url("https://preview.ibb.co/nDRpmw/3.png");
+  background-image: url("../../public/img/junmo-profile.png");
 }
 
 .member-icon {
@@ -1288,4 +1288,14 @@ input[type="text"], textarea {
 
 .btn-icon-active {
   cursor: pointer;
+}
+
+@media screen and (min-width:480px) {
+  .img-fluid {
+    height:  25rem;
+  }
+}
+
+.learn-more {
+  font-weight: 700;
 }
