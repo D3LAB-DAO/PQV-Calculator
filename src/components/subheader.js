@@ -1,10 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import styled from "styled-components";
 
-const Img = styled.img`
-  height: 25rem;
-`;
-
 const Space = styled.div`
   margin-bottom: 10rem;
 `;
@@ -14,7 +10,7 @@ const SubHeader = () => {
     <div id="home" className="container-fluid sect">
       <div className="row">
         <div className="col">
-          <Img className="" src="img/logo.png" alt="logo" />
+          <img className="img-fluid" src="img/logo.png" alt="logo" />
         </div>
       </div>
       <div className="row mb-3">
