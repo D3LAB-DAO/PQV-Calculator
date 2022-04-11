@@ -23,7 +23,7 @@ const Creators = () => {
               <br />
               <a href="https://sharp-saw-d58.notion.site/Luke-Park-d4edb5bf446b479796d0d9bfe422d92a" target="_blank"><i className="bi bi-house-fill member-icon"></i></a>
               <a href="https://github.com/lukepark327" target="_blank"><i className="bi bi-github member-icon" /></a>
-              <a href="mailto:lukepark327@gmail.com" target="_blank"><i className="bi bi-envelope-fill member-icon"></i></a>
+              <a href="mailto:lukepark@d3lab.xyz" target="_blank"><i className="bi bi-envelope-fill member-icon"></i></a>
             </p>
           </div>
         </div>
@@ -37,12 +37,11 @@ const Creators = () => {
             <p className="member-box__people">
               Researcher
               <br />
-              <a href="#" target="_blank"><i className="bi bi-house-fill member-icon"></i></a>
-              <a href="#" target="_blank"><i className="bi bi-github member-icon" /></a>
-              <a href="#" target="_blank"><i className="bi bi-envelope-fill member-icon"></i></a>
-              <a href="#" target="_blank"><i className="bi bi-medium member-icon" /></a>
-              <a href="#" target="_blank"><i className="bi bi-twitter member-icon" /></a>
-              <a href="#" target="_blank"><i className="bi bi-instagram member-icon" /></a>
+              <a href="https://www.linkedin.com/in/bosung-park/" target="_blank"><i className="bi bi-linkedin member-icon"></i></a>
+              <a href="https://medium.com/@elin-park" target="_blank"><i className="bi bi-medium member-icon" /></a>
+              <a href="https://twitter.com/Pulypoly" target="_blank"><i className="bi bi-twitter member-icon" /></a>
+              <a href="https://www.instagram.com/amolang__bsp" target="_blank"><i className="bi bi-instagram member-icon" /></a>
+              <a href="mailto:elin.park@d3lab.xyz" target="_blank"><i className="bi bi-envelope-fill member-icon"></i></a>
             </p>
           </div>
         </div>
@@ -60,12 +59,11 @@ const Creators = () => {
             <p className="member-box__people">
               Developer
               <br />
-              <a href="#" target="_blank"><i className="bi bi-house-fill member-icon"></i></a>
-              <a href="#" target="_blank"><i className="bi bi-github member-icon" /></a>
-              <a href="#" target="_blank"><i className="bi bi-envelope-fill member-icon"></i></a>
-              <a href="#" target="_blank"><i className="bi bi-medium member-icon" /></a>
-              <a href="#" target="_blank"><i className="bi bi-twitter member-icon" /></a>
-              <a href="#" target="_blank"><i className="bi bi-instagram member-icon" /></a>
+              <a href="https://github.com/ingeun92" target="_blank"><i className="bi bi-github member-icon" /></a>
+              <a href="https://medium.com/@ingeun92" target="_blank"><i className="bi bi-medium member-icon" /></a>
+              <a href="https://twitter.com/IngsParty" target="_blank"><i className="bi bi-twitter member-icon" /></a>
+              <a href="https://www.instagram.com/kim_in_geun/" target="_blank"><i className="bi bi-instagram member-icon" /></a>
+              <a href="mailto:ingeun92@d3lab.xzy" target="_blank"><i className="bi bi-envelope-fill member-icon"></i></a>
             </p>
           </div>
         </div>
@@ -79,12 +77,8 @@ const Creators = () => {
             <p className="member-box__people">
               Developer
               <br />
-              <a href="#" target="_blank"><i className="bi bi-house-fill member-icon"></i></a>
-              <a href="#" target="_blank"><i className="bi bi-github member-icon" /></a>
-              <a href="#" target="_blank"><i className="bi bi-envelope-fill member-icon"></i></a>
-              <a href="#" target="_blank"><i className="bi bi-medium member-icon" /></a>
-              <a href="#" target="_blank"><i className="bi bi-twitter member-icon" /></a>
-              <a href="#" target="_blank"><i className="bi bi-instagram member-icon" /></a>
+              <a href="https://github.com/ElectricPanda" target="_blank"><i className="bi bi-github member-icon" /></a>
+              <a href="mailto:junmo.lee@d3lab.xyz" target="_blank"><i className="bi bi-envelope-fill member-icon"></i></a>
             </p>
           </div>
         </div>
