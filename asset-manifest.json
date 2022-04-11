@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/PQV-tutorial/static/css/main.e404322b.css",
-    "main.js": "/PQV-tutorial/static/js/main.289e6b29.js",
+    "main.css": "/PQV-tutorial/static/css/main.f01cef43.css",
+    "main.js": "/PQV-tutorial/static/js/main.e2b68ef9.js",
     "static/js/787.903e03a9.chunk.js": "/PQV-tutorial/static/js/787.903e03a9.chunk.js",
+    "static/media/bosung-profile.png": "/PQV-tutorial/static/media/bosung-profile.e8940fd766c1c7675217.png",
     "index.html": "/PQV-tutorial/index.html",
-    "main.e404322b.css.map": "/PQV-tutorial/static/css/main.e404322b.css.map",
-    "main.289e6b29.js.map": "/PQV-tutorial/static/js/main.289e6b29.js.map",
+    "main.f01cef43.css.map": "/PQV-tutorial/static/css/main.f01cef43.css.map",
+    "main.e2b68ef9.js.map": "/PQV-tutorial/static/js/main.e2b68ef9.js.map",
     "787.903e03a9.chunk.js.map": "/PQV-tutorial/static/js/787.903e03a9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e404322b.css",
-    "static/js/main.289e6b29.js"
+    "static/css/main.f01cef43.css",
+    "static/js/main.e2b68ef9.js"
   ]
 }
