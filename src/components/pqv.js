@@ -3,7 +3,13 @@ import { createContext } from "react";
 
 import VoterList from "./voterlist";
 import VotingResult from "./votingresult";
-import { calSybil, calLinear, calPQV, calQV } from "../utils/voting";
+import {
+  calSybil,
+  calLinear,
+  calPQV,
+  calQV,
+  calSumVoting,
+} from "../utils/voting";
 
 export const voterListContext = createContext();
 
@@ -18,7 +24,7 @@ const PQV = () => {
   const [sybilResult, setSybilResult] = useState([]);
   const [PQVResult, setPQVResult] = useState([]);
 
-  useEffect(() => { });
+  useEffect(() => {});
 
   const addList = () => {
     const tmp = [
@@ -48,7 +54,13 @@ const PQV = () => {
       });
     });
 
-    let sumVoting = resultLinear;
+    let sumVoting = [0, 0, 0, 0];
+    voterList.forEach((voter) => {
+      voter.projList.forEach((proj, index) => {
+        sumVoting[index] += calSumVoting(proj);
+      });
+    });
+    console.log("sumVoting: ", sumVoting);
 
     voterList.forEach((voter) => {
       voter.projList.forEach((proj, index) => {
@@ -85,7 +97,7 @@ const PQV = () => {
   return (
     <div id="simulator" className="container mb-3 sect">
       <div className="row">
-        <h1 className="row__title">CALCULATOR</h1>
+        <h1 className="row__title">SIMULATOR</h1>
       </div>
       <div className="container mb-5">
         <voterListContext.Provider value={{ voterList, setVoterList }}>
@@ -97,8 +109,14 @@ const PQV = () => {
                 <div className="card-body">
                   <h5 className="card-title">{voterList.length}</h5>
                   <div>
-                    <i className="bi bi-patch-plus-fill btn-icon btn-icon-padding btn-icon-active" onClick={voterList.length < 10 ? addList : popupAlert}></i>
-                    <i className="bi bi-patch-minus-fill btn-icon btn-icon-active" onClick={removeList}></i>
+                    <i
+                      className="bi bi-patch-plus-fill btn-icon btn-icon-padding btn-icon-active"
+                      onClick={voterList.length < 10 ? addList : popupAlert}
+                    ></i>
+                    <i
+                      className="bi bi-patch-minus-fill btn-icon btn-icon-active"
+                      onClick={removeList}
+                    ></i>
                   </div>
                 </div>
               </div>
@@ -148,7 +166,7 @@ const PQV = () => {
           </div>
         </voterListContext.Provider>
 
-        <div id="result" style={isLoading ? {} : { display: 'none' }} >
+        <div id="result" style={isLoading ? {} : { display: "none" }}>
           <div className="row row__title row__padding">
             <h3>VOTING RESULTS</h3>
             <hr className="hr__primary" />
@@ -179,7 +197,6 @@ const PQV = () => {
             <div className="col-lg-2"></div>
           </div>
         </div>
-
       </div>
     </div>
   );
