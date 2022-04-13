@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/PQV-tutorial/static/css/main.f01cef43.css",
-    "main.js": "/PQV-tutorial/static/js/main.835fefa8.js",
+    "main.js": "/PQV-tutorial/static/js/main.16b87746.js",
     "static/js/787.903e03a9.chunk.js": "/PQV-tutorial/static/js/787.903e03a9.chunk.js",
     "static/media/bosung-profile.png": "/PQV-tutorial/static/media/bosung-profile.e8940fd766c1c7675217.png",
     "index.html": "/PQV-tutorial/index.html",
     "main.f01cef43.css.map": "/PQV-tutorial/static/css/main.f01cef43.css.map",
-    "main.835fefa8.js.map": "/PQV-tutorial/static/js/main.835fefa8.js.map",
+    "main.16b87746.js.map": "/PQV-tutorial/static/js/main.16b87746.js.map",
     "787.903e03a9.chunk.js.map": "/PQV-tutorial/static/js/787.903e03a9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f01cef43.css",
-    "static/js/main.835fefa8.js"
+    "static/js/main.16b87746.js"
   ]
 }
