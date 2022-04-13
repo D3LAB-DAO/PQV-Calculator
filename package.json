@@ -1,7 +1,7 @@
 {
-  "homepage": "http://D3LAB-DAO.github.io/PQV-tutorial",
-  "name": "dlab-tutorialpage",
-  "version": "0.1.0",
+  "homepage": "http://D3LAB-DAO.github.io/PQV-Calculator",
+  "name": "D3LAB-PQV-Calculator",
+  "version": "0.9.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.3",
