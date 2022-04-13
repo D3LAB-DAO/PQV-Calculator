@@ -85,7 +85,7 @@ const PQV = () => {
   return (
     <div id="simulator" className="container mb-3 sect">
       <div className="row">
-        <h1 className="row__title">SIMULATOR</h1>
+        <h1 className="row__title">CALCULATOR</h1>
       </div>
       <div className="container mb-5">
         <voterListContext.Provider value={{ voterList, setVoterList }}>

@@ -11,10 +11,10 @@ const Sponsors = () => {
         <div className="col col-lg-4">
           <img className="sponsor-logo partner_img" src="img/chainlink_white.png" alt="chainlink" />
         </div>
-        <div className="col col-lg-4">
+        {/* <div className="col col-lg-4">
           <img className="sponsor-logo partner_img" src="img/curg_white.png" alt="curg" />
         </div>
-        <div className="col-lg-2"></div>
+        <div className="col-lg-2"></div> */}
       </div>
     </div>
   );

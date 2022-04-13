@@ -16,7 +16,7 @@ const SubHeader = () => {
       <div className="row mb-3">
         <div className="col-1"></div>
         <div className="col-10">
-          <h1 className="sect__title">Governor-C Simulator</h1>
+          <h1 className="sect__title">PQV Calculator</h1>
           <h5 className="row__sub">Sybil resistant voting system without harming the result of QV.</h5>
         </div>
         <div className="col-1"></div>
