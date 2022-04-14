@@ -52,7 +52,6 @@ export const calPQV = (data) => {
       result -=
         Math.abs(Number(element)) * Math.sqrt(Math.abs(Number(element)));
     }
-    console.log("res: ", result);
   });
 
   return result;
@@ -63,7 +62,7 @@ export const calSumVoting = (data) => {
 
   let result = 0;
   preset.forEach((element) => {
-    result += Math.abs(Number(element)) * Math.sqrt(Math.abs(Number(element)));
+    result += Math.abs(Number(element));
   });
 
   return result;

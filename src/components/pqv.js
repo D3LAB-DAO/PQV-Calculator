@@ -60,7 +60,6 @@ const PQV = () => {
         sumVoting[index] += calSumVoting(proj);
       });
     });
-    console.log("sumVoting: ", sumVoting);
 
     voterList.forEach((voter) => {
       voter.projList.forEach((proj, index) => {
