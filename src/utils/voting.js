@@ -47,7 +47,7 @@ export const calPQV = (data) => {
   const preset = splitVoting(data);
 
   let result = 0;
-  const e = 2;
+  const e = 1;
 
   preset.forEach((element) => {
     if (Number(element) >= 0) {
