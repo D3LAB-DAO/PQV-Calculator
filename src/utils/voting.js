@@ -7,6 +7,7 @@ export const calLinear = (data) => {
   const preset = splitVoting(data);
 
   let result = 0;
+
   preset.forEach((element) => {
     result += Number(element);
   });
@@ -18,6 +19,7 @@ export const calQV = (data) => {
   const preset = splitVoting(data);
 
   let result = 0;
+
   preset.forEach((element) => {
     if (Number(element) >= 0) {
       result += Math.sqrt(Math.abs(Number(element)));
@@ -33,6 +35,7 @@ export const calSybil = (data) => {
   const preset = splitVoting(data);
 
   let result = 0;
+
   preset.forEach((element) => {
     result += Number(element);
   });
@@ -44,13 +47,17 @@ export const calPQV = (data) => {
   const preset = splitVoting(data);
 
   let result = 0;
+  const e = 2;
+
   preset.forEach((element) => {
     if (Number(element) >= 0) {
       result +=
-        Math.abs(Number(element)) * Math.sqrt(Math.abs(Number(element)));
+        Math.pow(Math.abs(Number(element)), e) *
+        Math.sqrt(Math.abs(Number(element)));
     } else {
       result -=
-        Math.abs(Number(element)) * Math.sqrt(Math.abs(Number(element)));
+        Math.pow(Math.abs(Number(element)), e) *
+        Math.sqrt(Math.abs(Number(element)));
     }
   });
 
@@ -61,6 +68,7 @@ export const calSumVoting = (data) => {
   const preset = splitVoting(data);
 
   let result = 0;
+
   preset.forEach((element) => {
     result += Math.abs(Number(element));
   });
