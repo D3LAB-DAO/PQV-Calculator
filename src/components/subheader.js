@@ -17,14 +17,20 @@ const SubHeader = () => {
         <div className="col-1"></div>
         <div className="col-10">
           <h1 className="sect__title">PQV Calculator</h1>
-          <h5 className="row__sub">Sybil resistant voting system without harming the result of QV.</h5>
+          <h5 className="row__sub">
+            Sybil resistant voting system without harming the result of QV.
+          </h5>
         </div>
         <div className="col-1"></div>
       </div>
       <div className="row">
         <div className="col">
-          <a className="btn btn-dark learn-more" href="https://d3lab-dao.gitbook.io/pqv/" target="_blank">
-          <i class="bi bi-journals"></i> GitBook
+          <a
+            className="btn btn-dark learn-more"
+            href="https://d3lab-dao.gitbook.io/pqv/"
+            target="_blank"
+          >
+            <i className="bi bi-journals"></i> GitBook
           </a>
         </div>
       </div>
