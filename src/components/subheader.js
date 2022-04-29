@@ -34,11 +34,11 @@ const SubHeader = () => {
           </a>
 
           <a
-            className="btn btn-dark lite-paper ms-1"
+            className="btn btn-dark white-paper ms-1"
             href="https://github.com/D3LAB-DAO/PQV-docs/blob/main/D3LAB_PQV.pdf"
             target="_blank"
           >
-            <i className="bi bi-journal-text"></i> Litepaper
+            <i className="bi bi-journal-text"></i> Whitepaper
           </a>
         </div>
       </div>
