@@ -65,15 +65,16 @@ export const calEQV = (data) => {
 };
 
 export const calPQV = (data, sumVoting) => {
-  console.log(sumVoting);
   const preset = splitVoting(data);
 
   let result = 0;
   const e = 1;
 
   preset.forEach((element) => {
-    const div = Math.pow(Math.abs(Number(element), e)) / sumVoting;
-
+    console.log(element);
+    console.log(sumVoting);
+    let div = Math.pow(Math.abs(Number(element)), e) / sumVoting;
+    console.log("div", div);
     if (Math.random() < div) {
       console.log(div, "True");
       if (Number(element) >= 0) {
