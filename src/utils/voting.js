@@ -43,7 +43,7 @@ export const calSybil = (data) => {
   return result;
 };
 
-export const calPQV = (data) => {
+export const calEQV = (data) => {
   const preset = splitVoting(data);
 
   let result = 0;
@@ -58,6 +58,35 @@ export const calPQV = (data) => {
       result -=
         Math.pow(Math.abs(Number(element)), e) *
         Math.sqrt(Math.abs(Number(element)));
+    }
+  });
+
+  return result;
+};
+
+export const calPQV = (data, sumVoting) => {
+  console.log(sumVoting);
+  const preset = splitVoting(data);
+
+  let result = 0;
+  const e = 1;
+
+  preset.forEach((element) => {
+    const div = element / sumVoting;
+
+    if (Math.random() < div) {
+      console.log(div, "True");
+      if (Number(element) >= 0) {
+        result +=
+          Math.pow(Math.abs(Number(element)), e) *
+          Math.sqrt(Math.abs(Number(element)));
+      } else {
+        result -=
+          Math.pow(Math.abs(Number(element)), e) *
+          Math.sqrt(Math.abs(Number(element)));
+      }
+    } else {
+      console.log(div, "False");
     }
   });
 
