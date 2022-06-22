@@ -71,12 +71,8 @@ export const calPQV = (data, sumVoting) => {
   const e = 1;
 
   preset.forEach((element) => {
-    console.log(element);
-    console.log(sumVoting);
     let div = Math.pow(Math.abs(Number(element)), e) / sumVoting;
-    console.log("div", div);
     if (Math.random() < div) {
-      console.log(div, "True");
       if (Number(element) >= 0) {
         result +=
           Math.pow(Math.abs(Number(element)), e) *
@@ -87,7 +83,6 @@ export const calPQV = (data, sumVoting) => {
           Math.sqrt(Math.abs(Number(element)));
       }
     } else {
-      console.log(div, "False");
     }
   });
 

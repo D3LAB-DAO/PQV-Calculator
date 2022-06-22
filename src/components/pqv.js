@@ -19,14 +19,25 @@ let isLoading = false;
 const PQV = () => {
   // In this code, variable Proj means Proposal.
   const [projList, setProjList] = useState([]);
+  const [viewProjList, setViewProjList] = useState([]);
+  const [projLength, setProjLength] = useState(0);
+
   const [voterList, setVoterList] = useState([]);
+  const [viewVoterList, setViewVoterList] = useState([]);
+  const [voterLength, setVoterLength] = useState(0);
+
   const [linearResult, setLinearResult] = useState([]);
   const [QVResult, setQVResult] = useState([]);
   const [sybilResult, setSybilResult] = useState([]);
   const [EQVResult, setEQVResult] = useState([]);
   const [PQVResult, setPQVResult] = useState([]);
 
-  useEffect(() => {}, []);
+  const [isSet, setIsSet] = useState(false);
+
+  useEffect(() => {
+    console.log("voterList: ", voterList);
+    console.log("viewVoterList: ", viewVoterList);
+  }, [voterList, viewVoterList]);
 
   const addVoterList = () => {
     const tmp = [
@@ -36,12 +47,18 @@ const PQV = () => {
         projList: projList,
       },
     ];
+
+    if (voterLength < 10) setVoterLength(voterLength + 1);
+
     setVoterList(tmp);
   };
 
   const removeVoterList = () => {
     const tmp = [...voterList];
     tmp.pop();
+
+    if (voterLength > 0) setVoterLength(voterLength - 1);
+
     setVoterList(tmp);
   };
 
@@ -54,15 +71,18 @@ const PQV = () => {
         projVoting: "",
       },
     ];
-    setProjList(tmp);
 
-    const ttmp = [...voterList];
-    setVoterList(ttmp);
+    if (projLength < 10) setProjLength(projLength + 1);
+
+    setProjList(tmp);
   };
 
   const removeProjList = () => {
     const tmp = [...projList];
     tmp.pop();
+
+    if (projLength > 0) setProjLength(projLength - 1);
+
     setProjList(tmp);
   };
 
@@ -88,6 +108,7 @@ const PQV = () => {
         resultPQV[e.index] += calPQV(e.projVoting, sumVoting[e.index]);
       });
     });
+
     resultEQV.forEach((index) => {
       resultEQV[index] /= sumVoting[index] === 0 ? 1 : sumVoting[index];
     });
@@ -97,6 +118,23 @@ const PQV = () => {
     setSybilResult(resultSybil.map((num) => num.toFixed(2)));
     setEQVResult(resultEQV.map((num) => num.toFixed(2)));
     setPQVResult(resultPQV.map((num) => num.toFixed(2)));
+  };
+
+  const setList = () => {
+    setViewVoterList([...voterList]);
+    setViewProjList([...projList]);
+
+    setIsSet(true);
+  };
+
+  const resetList = () => {
+    setVoterList([]);
+    setProjList([]);
+
+    setVoterLength(0);
+    setProjLength(0);
+
+    setIsSet(false);
   };
 
   const popupVoterAlert = () => {
@@ -118,29 +156,9 @@ const PQV = () => {
             <div className="col-lg-1 col-xl-2"></div>
             <div className="col col-lg-5 col-xl-4">
               <div className="card bg-darkgray">
-                <h5 className="card-header">NUMBER OF VOTERS</h5>
-                <div className="card-body">
-                  <h5 className="card-title">{voterList.length}</h5>
-                  <div>
-                    <i
-                      className="bi bi-patch-plus-fill btn-icon btn-icon-padding btn-icon-active"
-                      onClick={
-                        voterList.length < 10 ? addVoterList : popupVoterAlert
-                      }
-                    ></i>
-                    <i
-                      className="bi bi-patch-minus-fill btn-icon btn-icon-active"
-                      onClick={removeVoterList}
-                    ></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col col-lg-5 col-xl-4">
-              <div className="card bg-darkgray">
                 <h5 className="card-header">NUMBER OF PROPOSALS</h5>
                 <div className="card-body">
-                  <h5 className="card-title">{projList.length}</h5>
+                  <h5 className="card-title">{projLength}</h5>
                   <div>
                     <i
                       className="bi bi-patch-plus-fill btn-icon btn-icon-padding btn-icon-active"
@@ -156,36 +174,88 @@ const PQV = () => {
                 </div>
               </div>
             </div>
+            <div className="col col-lg-5 col-xl-4">
+              <div className="card bg-darkgray">
+                <h5 className="card-header">NUMBER OF VOTERS</h5>
+                <div className="card-body">
+                  <h5 className="card-title">{voterLength}</h5>
+                  <div>
+                    <i
+                      className="bi bi-patch-plus-fill btn-icon btn-icon-padding btn-icon-active"
+                      onClick={
+                        voterList.length < 10 ? addVoterList : popupVoterAlert
+                      }
+                    ></i>
+                    <i
+                      className="bi bi-patch-minus-fill btn-icon btn-icon-active"
+                      onClick={removeVoterList}
+                    ></i>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div className="col-lg-1 col-xl-2"></div>
           </div>
-          <div className="row">
-            <div className="col-lg-1"></div>
-            <div className="table-responsive mt-3 col-lg">
-              <table className="table align-middle">
-                <thead className="fw-bold" key="voters">
-                  <tr>
-                    <th>VOTERS</th>
-                    {projList.map((e) => (
-                      <th>Proposal {e.projName}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {voterList.map((e) => (
-                    <VoterList index={e.index} projList={e.projList} />
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <div className="col-lg-1"></div>
-          </div>
-          <div className="row">
+          <div className="row mt-3">
+            <div className="col-2" />
             <div className="col">
-              <button type="button" className="btn btn-dark" onClick={calList}>
-                GO
+              <button type="button" className="btn btn-dark" onClick={setList}>
+                SET
               </button>
             </div>
+            <div className="col">
+              <button
+                type="button"
+                className="btn btn-dark"
+                onClick={resetList}
+              >
+                RESET
+              </button>
+            </div>
+            <div className="col-2" />
           </div>
+          {!isSet ? (
+            <div className="row mt-5 mb-5">
+              <div className="col">
+                <h3>Please SET Number of Voters and Proposals</h3>
+              </div>
+            </div>
+          ) : (
+            <>
+              <div className="row">
+                <div className="col-lg-1"></div>
+                <div className="table-responsive mt-3 col-lg">
+                  <table className="table align-middle">
+                    <thead className="fw-bold">
+                      <tr>
+                        <th>VOTERS</th>
+                        {viewProjList.map((e) => (
+                          <th>Proposal {e.projName}</th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {viewVoterList.map((e) => (
+                        <VoterList index={e.index} projList={e.projList} />
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <div className="col-lg-1"></div>
+              </div>
+              <div className="row">
+                <div className="col">
+                  <button
+                    type="button"
+                    className="btn btn-dark"
+                    onClick={calList}
+                  >
+                    GO
+                  </button>
+                </div>
+              </div>
+            </>
+          )}
         </voterListContext.Provider>
 
         <div id="result" style={isLoading ? {} : { display: "none" }}>
