@@ -97,6 +97,13 @@ const Creators = () => {
               Developer
               <br />
               <a
+                href="https://www.linkedin.com/in/ingeun-kim-152b3123b/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i className="bi bi-linkedin member-icon"></i>
+              </a>
+              <a
                 href="https://github.com/ingeun92"
                 target="_blank"
                 rel="noreferrer"
