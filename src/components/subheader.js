@@ -29,6 +29,7 @@ const SubHeader = () => {
             className="btn btn-dark learn-more me-1"
             href="https://d3lab-dao.gitbook.io/pqv/"
             target="_blank"
+            rel="noreferrer"
           >
             <i className="bi bi-journals"></i> GitBook
           </a>
@@ -37,6 +38,7 @@ const SubHeader = () => {
             className="btn btn-dark white-paper ms-1"
             href="https://github.com/D3LAB-DAO/PQV-docs/blob/main/D3LAB_PQV.pdf"
             target="_blank"
+            rel="noreferrer"
           >
             <i className="bi bi-journal-text"></i> Whitepaper
           </a>
