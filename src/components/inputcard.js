@@ -9,7 +9,7 @@ const InputCard = (props) => {
   const handleInputChange = (e, index, projIndex) => {
     const voting = e.target.value;
     const tmp = [...voterListProps.voterList];
-    tmp[index].projList[projIndex] = voting;
+    tmp[index].projList[projIndex].projVoting = voting;
     voterListProps.setVoterList(tmp);
   };
 
