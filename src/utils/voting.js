@@ -72,7 +72,7 @@ export const calPQV = (data, sumVoting) => {
   const e = 1;
 
   preset.forEach((element) => {
-    const div = element / sumVoting;
+    const div = Math.pow(Math.abs(Number(element), e)) / sumVoting;
 
     if (Math.random() < div) {
       console.log(div, "True");
