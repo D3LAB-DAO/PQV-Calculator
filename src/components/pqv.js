@@ -264,38 +264,41 @@ const PQV = () => {
             </>
           )}
         </voterListContext.Provider>
-
-        <div id="result" style={isLoading ? {} : { display: "none" }}>
-          <div className="row row__title row__padding">
-            <h3>VOTING RESULTS</h3>
-            <hr className="hr__primary" />
-          </div>
-          <div className="row">
-            <div className="col-lg-2"></div>
-            <div className="table-responsive card-body table__padding col-lg-8">
-              <table className="table">
-                <thead className="fw-bold">
-                  <tr>
-                    <th>TYPE</th>
-                    {projList.map((e) => (
-                      <th>Proposal {e.projName}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  <VotingResult
-                    linearResult={linearResult}
-                    QVResult={QVResult}
-                    sybilResult={sybilResult}
-                    EQVResult={EQVResult}
-                    PQVResult={PQVResult}
-                  />
-                </tbody>
-              </table>
+        {isSet ? (
+          <div id="result" style={isLoading ? {} : { display: "none" }}>
+            <div className="row row__title row__padding">
+              <h3>VOTING RESULTS</h3>
+              <hr className="hr__primary" />
             </div>
-            <div className="col-lg-2"></div>
+            <div className="row">
+              <div className="col-lg-2"></div>
+              <div className="table-responsive card-body table__padding col-lg-8">
+                <table className="table">
+                  <thead className="fw-bold">
+                    <tr>
+                      <th>TYPE</th>
+                      {projList.map((e) => (
+                        <th>Proposal {e.projName}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <VotingResult
+                      linearResult={linearResult}
+                      QVResult={QVResult}
+                      sybilResult={sybilResult}
+                      EQVResult={EQVResult}
+                      PQVResult={PQVResult}
+                    />
+                  </tbody>
+                </table>
+              </div>
+              <div className="col-lg-2"></div>
+            </div>
           </div>
-        </div>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );
