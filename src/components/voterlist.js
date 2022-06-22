@@ -9,7 +9,11 @@ const VoterList = (props) => {
 
   return (
     <tr>
-      <td>VOTER {index + 1}</td>
+      <td>
+        VOTER
+        <br />
+        {index + 1}
+      </td>
       {projList.map((e) => (
         <td>
           <InputCard index={index} projIndex={e.index} />

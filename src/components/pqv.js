@@ -34,10 +34,7 @@ const PQV = () => {
 
   const [isSet, setIsSet] = useState(false);
 
-  useEffect(() => {
-    console.log("voterList: ", voterList);
-    console.log("viewVoterList: ", viewVoterList);
-  }, [voterList, viewVoterList]);
+  useEffect(() => {}, []);
 
   const addVoterList = () => {
     const tmp = [
@@ -196,32 +193,38 @@ const PQV = () => {
             </div>
             <div className="col-lg-1 col-xl-2"></div>
           </div>
-          <div className="row mt-3">
-            <div className="col-2" />
-            <div className="col">
-              <button type="button" className="btn btn-dark" onClick={setList}>
-                SET
-              </button>
-            </div>
-            <div className="col">
-              <button
-                type="button"
-                className="btn btn-dark"
-                onClick={resetList}
-              >
-                RESET
-              </button>
-            </div>
-            <div className="col-2" />
-          </div>
           {!isSet ? (
-            <div className="row mt-5 mb-5">
-              <div className="col">
-                <h3>Please SET Number of Voters and Proposals</h3>
+            <>
+              <div className="row mt-3">
+                <div className="col">
+                  <button
+                    type="button"
+                    className="btn btn-dark"
+                    onClick={setList}
+                  >
+                    SET
+                  </button>
+                </div>
               </div>
-            </div>
+              <div className="row mt-5 mb-5">
+                <div className="col">
+                  <h3>Please SET Number of Voters and Proposals</h3>
+                </div>
+              </div>
+            </>
           ) : (
             <>
+              <div className="row mt-3">
+                <div className="col">
+                  <button
+                    type="button"
+                    className="btn btn-dark"
+                    onClick={resetList}
+                  >
+                    RESET
+                  </button>
+                </div>
+              </div>
               <div className="row">
                 <div className="col-lg-1"></div>
                 <div className="table-responsive mt-3 col-lg">
@@ -230,7 +233,11 @@ const PQV = () => {
                       <tr>
                         <th>VOTERS</th>
                         {viewProjList.map((e) => (
-                          <th>Proposal {e.projName}</th>
+                          <th>
+                            Proposal
+                            <br />
+                            {e.projName}
+                          </th>
                         ))}
                       </tr>
                     </thead>
