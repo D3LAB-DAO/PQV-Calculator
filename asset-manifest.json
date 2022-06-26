@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/PQV-Calculator/static/css/main.36140674.css",
-    "main.js": "/PQV-Calculator/static/js/main.72e9acef.js",
+    "main.js": "/PQV-Calculator/static/js/main.aab5c5db.js",
     "static/js/787.89dc46e1.chunk.js": "/PQV-Calculator/static/js/787.89dc46e1.chunk.js",
     "static/media/bosung-profile.png": "/PQV-Calculator/static/media/bosung-profile.e8940fd766c1c7675217.png",
     "index.html": "/PQV-Calculator/index.html",
     "main.36140674.css.map": "/PQV-Calculator/static/css/main.36140674.css.map",
-    "main.72e9acef.js.map": "/PQV-Calculator/static/js/main.72e9acef.js.map",
+    "main.aab5c5db.js.map": "/PQV-Calculator/static/js/main.aab5c5db.js.map",
     "787.89dc46e1.chunk.js.map": "/PQV-Calculator/static/js/787.89dc46e1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.36140674.css",
-    "static/js/main.72e9acef.js"
+    "static/js/main.aab5c5db.js"
   ]
 }
