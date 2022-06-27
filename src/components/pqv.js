@@ -95,6 +95,9 @@ const PQV = () => {
     setVoterList([]);
     setProjList([]);
 
+    setVoterList([]);
+    setProjList([]);
+
     setVoterLength(0);
     setProjLength(0);
 
@@ -123,13 +126,10 @@ const PQV = () => {
     const sumVoting = Array.from({ length: projList.length }, () => 0);
 
     voterList.forEach((voter) => {
-      console.log(voter);
       voter.projList.forEach((e) => {
-        // console.log(e);
         sumVoting[e.index] += calSumVoting(e.projVoting);
 
         resultLinear[e.index] += calLinear(e.projVoting);
-        // console.log(resultLinear);
         resultQV[e.index] += calQV(e.projVoting);
         resultSybil[e.index] += calSybil(e.projVoting);
         resultEQV[e.index] += calEQV(e.projVoting);

@@ -5,6 +5,9 @@ const VoterList = (props) => {
   const index = props.index;
   const projList = props.projList;
 
+  // console.log("index: ", index);
+  // console.log("projList: ", projList);
+
   useEffect(() => {});
 
   return (
