@@ -33,6 +33,7 @@ const PQV = () => {
   const [PQVResult, setPQVResult] = useState([]);
 
   const [isSet, setIsSet] = useState(false);
+  const [isGo, setIsGo] = useState(false);
 
   useEffect(() => {}, []);
 
@@ -83,40 +84,6 @@ const PQV = () => {
     setProjList(tmp);
   };
 
-  const calList = () => {
-    isLoading = true;
-
-    let resultLinear = Array.from({ length: projList.length }, () => 0);
-    let resultQV = Array.from({ length: projList.length }, () => 0);
-    let resultSybil = Array.from({ length: projList.length }, () => 0);
-    let resultEQV = Array.from({ length: projList.length }, () => 0);
-    let resultPQV = Array.from({ length: projList.length }, () => 0);
-
-    let sumVoting = Array.from({ length: projList.length }, () => 0);
-
-    voterList.forEach((voter) => {
-      voter.projList.forEach((e) => {
-        sumVoting[e.index] += calSumVoting(e.projVoting);
-
-        resultLinear[e.index] += calLinear(e.projVoting);
-        resultQV[e.index] += calQV(e.projVoting);
-        resultSybil[e.index] += calSybil(e.projVoting);
-        resultEQV[e.index] += calEQV(e.projVoting);
-        resultPQV[e.index] += calPQV(e.projVoting, sumVoting[e.index]);
-      });
-    });
-
-    resultEQV.forEach((index) => {
-      resultEQV[index] /= sumVoting[index] === 0 ? 1 : sumVoting[index];
-    });
-
-    setLinearResult(resultLinear.map((num) => num.toFixed(2)));
-    setQVResult(resultQV.map((num) => num.toFixed(2)));
-    setSybilResult(resultSybil.map((num) => num.toFixed(2)));
-    setEQVResult(resultEQV.map((num) => num.toFixed(2)));
-    setPQVResult(resultPQV.map((num) => num.toFixed(2)));
-  };
-
   const setList = () => {
     setViewVoterList([...voterList]);
     setViewProjList([...projList]);
@@ -132,6 +99,7 @@ const PQV = () => {
     setProjLength(0);
 
     setIsSet(false);
+    setIsGo(false);
   };
 
   const popupVoterAlert = () => {
@@ -140,6 +108,44 @@ const PQV = () => {
 
   const popupProjAlert = () => {
     return alert("No More Proposals!");
+  };
+
+  const calList = () => {
+    isLoading = true;
+    setIsGo(true);
+
+    const resultLinear = Array.from({ length: projList.length }, () => 0);
+    const resultQV = Array.from({ length: projList.length }, () => 0);
+    const resultSybil = Array.from({ length: projList.length }, () => 0);
+    const resultEQV = Array.from({ length: projList.length }, () => 0);
+    const resultPQV = Array.from({ length: projList.length }, () => 0);
+
+    const sumVoting = Array.from({ length: projList.length }, () => 0);
+
+    voterList.forEach((voter) => {
+      console.log(voter);
+      voter.projList.forEach((e) => {
+        // console.log(e);
+        sumVoting[e.index] += calSumVoting(e.projVoting);
+
+        resultLinear[e.index] += calLinear(e.projVoting);
+        // console.log(resultLinear);
+        resultQV[e.index] += calQV(e.projVoting);
+        resultSybil[e.index] += calSybil(e.projVoting);
+        resultEQV[e.index] += calEQV(e.projVoting);
+        resultPQV[e.index] += calPQV(e.projVoting, sumVoting[e.index]);
+      });
+    });
+
+    resultEQV.forEach((v, i) => {
+      resultEQV[i] /= sumVoting[i] === 0 ? 1 : sumVoting[i];
+    });
+
+    setLinearResult(resultLinear.map((num) => num.toFixed(2)));
+    setQVResult(resultQV.map((num) => num.toFixed(2)));
+    setSybilResult(resultSybil.map((num) => num.toFixed(2)));
+    setEQVResult(resultEQV.map((num) => num.toFixed(2)));
+    setPQVResult(resultPQV.map((num) => num.toFixed(2)));
   };
 
   return (
@@ -264,7 +270,7 @@ const PQV = () => {
             </>
           )}
         </voterListContext.Provider>
-        {isSet ? (
+        {isGo ? (
           <div id="result" style={isLoading ? {} : { display: "none" }}>
             <div className="row row__title row__padding">
               <h3>VOTING RESULTS</h3>

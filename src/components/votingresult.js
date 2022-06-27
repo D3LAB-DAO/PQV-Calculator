@@ -5,6 +5,10 @@ const VotingResult = (props) => {
   const EQVResult = props.EQVResult;
   const PQVResult = props.PQVResult;
 
+  // console.log("QV: ", QVResult);
+  // console.log("EQV: ", EQVResult);
+  // console.log("PQV: ", PQVResult);
+
   return (
     <>
       <tr>
