@@ -4,10 +4,11 @@ import { createContext } from "react";
 import VoterList from "./voterlist";
 import VotingResult from "./votingresult";
 import {
-  calSybil,
   calLinear,
-  calPQV,
   calQV,
+  calSybil,
+  calPQV,
+  calEQV,
   calSumVoting,
 } from "../utils/voting";
 
@@ -23,6 +24,7 @@ const PQV = () => {
   const [QVResult, setQVResult] = useState([]);
   const [sybilResult, setSybilResult] = useState([]);
   const [PQVResult, setPQVResult] = useState([]);
+  const [EQVResult, setEQVResult] = useState([]);
 
   useEffect(() => {});
 
@@ -47,51 +49,53 @@ const PQV = () => {
     let resultQV = [0, 0, 0, 0];
     let resultSybil = [0, 0, 0, 0];
     let resultPQV = [0, 0, 0, 0];
+    let resultEQV = [0, 0, 0, 0];
+    
+    let sumVoting = 0;
+    voterList.forEach((voter) => {
+      voter.projList.forEach((proj, index) => {
+        sumVoting += calSumVoting(proj);
+      });
+    });
 
     voterList.forEach((voter) => {
       voter.projList.forEach((proj, index) => {
         resultLinear[index] += calLinear(proj);
-      });
-    });
-
-    let sumVoting = [0, 0, 0, 0];
-    voterList.forEach((voter) => {
-      voter.projList.forEach((proj, index) => {
-        sumVoting[index] += calSumVoting(proj);
-      });
-    });
-
-    voterList.forEach((voter) => {
-      voter.projList.forEach((proj, index) => {
         resultQV[index] += calQV(proj);
-      });
-    });
-
-    voterList.forEach((voter) => {
-      voter.projList.forEach((proj, index) => {
         resultSybil[index] += calSybil(proj);
+        resultPQV[index] += calPQV(proj, sumVoting);
+        resultEQV[index] += calEQV(proj, sumVoting);
       });
     });
 
-    voterList.forEach((voter) => {
-      voter.projList.forEach((proj, index) => {
-        resultPQV[index] += calPQV(proj);
+    let sumPQV = resultPQV.reduce(function add(sum, currValue) {
+      return sum + currValue;
+    }, 0);;
+    const maxcount = 100;
+    let count = 0;
+    while (sumPQV === 0 && count < maxcount) {
+      voterList.forEach((voter) => {
+        voter.projList.forEach((proj, index) => {
+          resultPQV[index] += calPQV(proj, sumVoting);
+        });
       });
-    });
 
-    resultPQV.forEach((data, index) => {
-      resultPQV[index] /= sumVoting[index] === 0 ? 1 : sumVoting[index];
-    });
+      sumPQV = resultPQV.reduce(function add(sum, currValue) {
+        return sum + currValue;
+      }, 0);
+      count += 1;
+    }
 
     setLinearResult(resultLinear.map((num) => num.toFixed(2)));
     setQVResult(resultQV.map((num) => num.toFixed(2)));
     setSybilResult(resultSybil.map((num) => num.toFixed(2)));
     setPQVResult(resultPQV.map((num) => num.toFixed(2)));
+    setEQVResult(resultEQV.map((num) => num.toFixed(2)));
   };
 
-  const popupAlert = () => {
-    return alert("No More Voters!");
-  };
+  // const popupAlert = () => {
+  //   return alert("No More Voters!");
+  // };
 
   return (
     <div id="simulator" className="container mb-3 sect">
@@ -110,11 +114,12 @@ const PQV = () => {
                   <div>
                     <i
                       className="bi bi-patch-plus-fill btn-icon btn-icon-padding btn-icon-active"
-                      onClick={voterList.length < 10 ? addList : popupAlert}
+                      // onClick={voterList.length < 10 ? addList : popupAlert}
+                      onClick={voterList.length < 10 ? addList : {}}
                     ></i>
                     <i
                       className="bi bi-patch-minus-fill btn-icon btn-icon-active"
-                      onClick={removeList}
+                      onClick={voterList.length > 1 ? removeList : {}}
                     ></i>
                   </div>
                 </div>
@@ -189,6 +194,7 @@ const PQV = () => {
                     QVResult={QVResult}
                     sybilResult={sybilResult}
                     PQVResult={PQVResult}
+                    EQVResult={EQVResult}
                   />
                 </tbody>
               </table>
