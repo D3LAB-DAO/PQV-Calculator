@@ -18,6 +18,8 @@ let isLoading = false;
 
 const PQV = () => {
   // In this code, variable Proj means Proposal.
+
+  // TODO: Remove projLists or List out them.
   const [projList, setProjList] = useState([]);
   const [viewProjList, setViewProjList] = useState([]);
   const [projLength, setProjLength] = useState(0);
@@ -60,6 +62,7 @@ const PQV = () => {
     setVoterList(tmp);
   };
 
+  // TODO: Remove projLists or List out them.
   const addProjList = () => {
     const tmp = [
       ...projList,
